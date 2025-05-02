@@ -3,12 +3,12 @@
       <div class="login-box">
         <div class="input-box">
           <i class="fas fa-envelope"></i>
-          <input type="email" placeholder="Email" v-model="email" />
+          <input type="email" id="email"  placeholder="Email" v-model="email" />
         </div>
   
         <div class="input-box">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" v-model="password" />
+          <input type="password" id="password" placeholder="Password" v-model="password" />
         </div>
   
         <div class="btn-group">
