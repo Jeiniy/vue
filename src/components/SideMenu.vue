@@ -64,8 +64,10 @@ defineProps({
 
 .menu-header h2 {
   margin-bottom: 10px;
+  font-size: 27px;
 }
 .menu-header hr {
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 .menu-list {

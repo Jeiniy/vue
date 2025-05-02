@@ -18,11 +18,14 @@
 .navbar {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  height: 80px;
+  width: 118%;
+  max-width: none;
+  margin: 0;
+  height: 85px;
   align-items: center;
-  padding: 15px 30px;
+  padding: 0px 30px;
   background-color: #ffffff;
+  transform: translateX(-110px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 

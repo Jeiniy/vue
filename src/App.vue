@@ -28,7 +28,9 @@ function closeMenu() {
 <style>
 html, body, #app {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
 
@@ -36,8 +38,8 @@ html, body, #app {
 
 
 .page-container {
-  width: 1280px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   padding: 20px;
   background: #fff;
 }

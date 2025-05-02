@@ -14,10 +14,11 @@
     text-align: center;
     padding: 20px;
     font-size: 14px;
-    width: 100%;         
+    width: 119%;        
     height: 120px; 
     color: #444;
     margin-top: 20px;
+    transform: translateX(-115px);
   }
   
   .footer-content p {

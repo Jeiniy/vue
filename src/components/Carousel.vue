@@ -55,14 +55,15 @@ onUnmounted(() => {
 
 <style scoped>
 .carousel {
-  width: 100%;
+  width: 115%;
   position: relative;
   overflow: hidden;
+  transform: translateX(-50px);
 }
 
 .carousel-slide {
-  width: 100%;
-  height: 530px; /* 高度你可以自己調 */
+  width: 115%;
+  height: 600px; /* 高度你可以自己調 */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
