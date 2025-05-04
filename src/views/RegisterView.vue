@@ -187,4 +187,3 @@ async function register() {
   }
 }
 </script>
-

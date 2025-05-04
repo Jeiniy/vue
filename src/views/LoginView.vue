@@ -15,7 +15,7 @@
           <router-link to="/register">
             <button class="btn register">註冊</button>
           </router-link>
-          <router-link to="/userhome">
+          <router-link to="/control">
             <button class="btn login">登入</button>
           </router-link>
         </div>
