@@ -1,5 +1,5 @@
 <template>
-  <div class="carousel">
+  <div class="carousel w-full max-w-screen-xl ">
     <div 
       class="carousel-slide" 
       :style="{ backgroundImage: `url(${images[currentIndex]})` }"
@@ -55,10 +55,10 @@ onUnmounted(() => {
 
 <style scoped>
 .carousel {
-  width: 115%;
+ 
   position: relative;
   overflow: hidden;
-  transform: translateX(-50px);
+  
 }
 
 .carousel-slide {

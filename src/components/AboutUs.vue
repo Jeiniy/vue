@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <section class="concept">
+  <section class="concept w-full max-w-screen-xl ">
     <div class="text-area">
       <h1>關於我們</h1>
       <h3>「用心傾聽，化作溫暖」</h3>
@@ -36,13 +36,13 @@ defineProps({
 
 <style scoped>
 .concept {
-  width: 115%;
+  
   display: flex;
   background: #ffffff;
   padding: 70px;
   border-radius: 20px;
   flex-wrap: wrap;
-  transform: translateX(-115px);
+  
 }
 
 .text-area {
@@ -116,19 +116,19 @@ defineProps({
   width: 10%;
   padding: 20px;
   margin-top: 40px;
-  margin-left: -40px;  
+  margin-left: -20px;  
   transform: translateX(70px);
 }
 
 .bg-block {
   position: absolute;
+  top: -50px;
   left: -20px;
   width: 300px;
   height: 220px;
   background: #efe7dc;
   border-radius: 12px;
   z-index: 1;
-  transform: translate(80%, -20%);
 }
 
 .image-wrap img {

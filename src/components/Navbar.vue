@@ -1,11 +1,11 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar w-full max-w-screen-xl ">
     <div class="menu-toggle" @click="$emit('toggle-menu')">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </div>
-    <h1 class="logo">陪伴型照護機器人</h1>
+    <h1 class="logo text-base sm:text-xl font-bold text-black whitespace-nowrap truncate ml-4">陪伴型照護機器人</h1>
     <ul class="nav-list">
       <li>
         <router-link to="/login">註冊 & 登入</router-link>
@@ -16,17 +16,18 @@
 
 <style scoped>
 .navbar {
-  display: flex;
-  flex-direction: row;
-  width: 118%;
   max-width: none;
   margin: 0;
-  height: 85px;
+  
   align-items: center;
-  padding: 0px 30px;
-  background-color: #ffffff;
-  transform: translateX(-110px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  flex-direction: row;
+  display: flex;
+  padding: 0px 30px;
+  height: 85px;
+  
+ 
 }
 
 .menu-toggle {

@@ -1,11 +1,13 @@
 <template>
-  <div id="app">
+  <div id="app" class="min-h-screen flex flex-col">
     <Navbar @toggle-menu="openMenu" />
     <SideMenu :isOpen="showSideMenu" :closeMenu="closeMenu" />
-    <router-view />
+    <div class="flex-grow">
+      <router-view />
+    </div>
     <Footer />
   </div>
-</template>``
+</template>`
 
 <script setup>
 import { ref } from 'vue'
