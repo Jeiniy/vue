@@ -2,7 +2,7 @@
   <main class="register-page-main">
     <div class="register-box">
 
-<h2 class="form-title">註冊</h2>
+<h2 class="form-title">修改個人資訊</h2>
 
 <div class="form-row"> <!-- 兩欄式的關鍵 -->
 
@@ -21,7 +21,7 @@
         <input type="text" id="phone" placeholder="請輸入電話" v-model="phone" />
       </div>
     </div>
-
+  
     <div class="form-group">
       <label for="email">信箱：</label>
       <div class="input-box">
@@ -51,7 +51,7 @@
 
 <!-- 完成按鈕 -->
 <div class="submit-button">
-  <button class="btn" @click="register">完成</button>
+  <button class="btn" @click="register">確認修改</button>
 </div>
 
 

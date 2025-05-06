@@ -1,0 +1,241 @@
+.wrapper-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px 20px;
+    
+  }
+  
+  .emergency-contact-wrapper {
+    display: flex;
+    flex-direction: column;  
+    gap: 50px; 
+    max-width: 42%;
+    margin: 10px auto ;
+    
+  }
+  
+  /* 左側主要表單區塊 */
+  .form-wrapper {
+    max-width: 55%;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 15px;                       
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);   
+    float: left;                               
+    clear: both;                               
+    margin-bottom: 10px;                       
+              
+  }
+  
+  /* 緊急聯絡人表單區塊，靠右 */
+  .form-wrapper1,
+  .form-wrapper2 {
+      padding: 15px 20px;
+      background-color: rgba(255, 255, 255, 0.8); 
+      border-radius: 15px;                       
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);   
+      float: left;                               
+      clear: both;                               
+      margin-bottom: 10px;
+  }
+  
+  
+  .form-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .form-area {
+    display: grid;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 1px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* ==========【表單元素】========== */
+  
+  .form-group {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+  
+  
+  
+  .form-group label {
+    width: 60px;
+    margin-right: 10px;
+    white-space: nowrap;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .save-button {
+    width: 100px;
+    height: 50px;
+    border-radius: 20px; /* 方圓形 */
+    background-color: #efe7dc;
+    color: rgb(108, 107, 107);
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .save-button:hover {
+    background-color: #dec9a9;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  .save-button:active {
+    transform: scale(0.95);
+  }
+  .save-button-wrapper {
+    width: 100%;
+    text-align: center;
+    margin: 10px;
+  
+    
+  }
+  .required-label::before {
+    content: '*';
+    color: red;
+    margin-right: 2px;
+  }
+  .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(220, 53, 69, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+        }
+  
+  /* 擴充版面用 */
+  .form-full {
+    grid-column: 1 / -1;
+  }
+  
+  .form-full input[type="text"] {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .form-group1.form-full {
+    display: block;
+    margin-bottom: 20px;   /* 調整你喜歡的間隔 */
+  }
+  .form-group1.form-full > div {
+    margin-top: 5px;
+  }
+  
+  .small-input {
+    width: 100px!important;
+    box-sizing: border-box;
+  }
+  
+  .small-input1 {
+    width: 120px!important;
+    box-sizing: border-box;
+  }
+  
+  span {
+    margin-left: 3px;
+  }
+  
+  .radio-group {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px 5px;
+    align-items: center;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 40px;
+    align-items: center;
+  }
+  
+  .checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+  
+  .checkbox-group input[type="text"],
+  .other-input {
+    width: 80px;
+    padding: 2px;
+    font-size: 1rem;
+    height: auto;
+    margin-left: 5px;
+  }
+  
+  .address-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    width: 60%;
+  }
+  
+  /* ==========【表單分組】========== */
+  
+  
+  .form-row-basic,
+  .form-row-physical {
+      display: grid;
+      grid-template-columns: 200px 1fr 200px 1fr; /* 4格，左右固定比例 */
+      gap: 20px;
+      align-items: center;
+      width: 100%;
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .form-row label {
+    width: 50px;
+  }
+  
+  
+  /* ==========【睡眠時間區塊】========== */
+  
+  #sleep-wake-time {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    
+  }
+  
+  .time-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+  
+  .time-row label {
+    width: 100px;
+  }

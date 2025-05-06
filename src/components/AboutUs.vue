@@ -19,11 +19,11 @@ defineProps({
           因此，我們希望結合 AI 技術，打造一套智慧照護解決方案，提升長者的生活品質與安全感。
       </p>
       
-        <router-link to="/AboutView" class="view-more">VIEW MORE
+        <!-- <router-link to="/AboutView" class="view-more">VIEW MORE
           <span class="circle-arrow"> 
             <span class="inner-arrow">&gt;</span>
           </span>
-        </router-link>
+        </router-link> -->
     
         
     </div>

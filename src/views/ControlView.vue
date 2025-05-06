@@ -5,7 +5,7 @@
       <!-- 快速操作按鈕列 -->
       <div class="button-group">
         <button @click="goToFallMonitor">查看影像</button>
-        <button @click="goToSchedule">今日行程</button>
+        <button @click="goToEnter">設定/修改年長者資訊</button>
       </div>
   
       <!-- 下面是其他元件 -->
@@ -23,9 +23,9 @@ const router = useRouter()
     router.push('/fall')
   }
   
-  function goToSchedule() {
+  function goToEnter() {
     // 導向行程頁
-    window.location.href = '/schedule'
+    window.location.href = '/enter'
   }
   
   function logout() {

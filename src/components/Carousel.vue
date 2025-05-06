@@ -7,8 +7,8 @@
     </div>
 
     <!-- 左右切換按鈕 -->
-    <button class="carousel-button prev" @click="prevImage">‹</button>
-    <button class="carousel-button next" @click="nextImage">›</button>
+    <!-- <button class="carousel-button prev" @click="prevImage">‹</button>
+    <button class="carousel-button next" @click="nextImage">›</button> -->
 
   </div>
 </template>

@@ -15,6 +15,9 @@
         </li>
         <li><a href="#"><img :src="img2" /> 關於我們 </a></li>
         <li><a href="#"><img :src="img3" /> 使用教學 </a></li>
+        <li>
+          <router-link to="/change"><img :src="img4" /> 個人資料 </router-link>
+        </li>
       </ul>
 
       <!-- 底部 -->
@@ -29,6 +32,7 @@
 import img1 from '@/assets/image/home.png'
 import img2 from '@/assets/image/graduate.png'
 import img3 from '@/assets/image/assignment.png'
+import img4 from '@/assets/image/user.png'
 
 defineProps({
   isOpen: Boolean,
