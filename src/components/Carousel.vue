@@ -1,25 +1,15 @@
 <template>
   <div class="carousel w-full max-w-screen-xl ">
     <div 
-      class="carousel-slide" 
+      class="carousel-slide " 
       :style="{ backgroundImage: `url(${images[currentIndex]})` }"
     >
-      <!-- 這裡不放 img，直接用背景 -->
     </div>
 
     <!-- 左右切換按鈕 -->
     <button class="carousel-button prev" @click="prevImage">‹</button>
     <button class="carousel-button next" @click="nextImage">›</button>
 
-    <!-- 下方小圓點 -->
-    <!-- <div class="carousel-indicators">
-      <span 
-        v-for="(img, index) in images" 
-        :key="index"
-        :class="{ active: index === currentIndex }"
-        @click="goToImage(index)"
-      ></span>
-    </div> -->
   </div>
 </template>
 
@@ -55,17 +45,17 @@ onUnmounted(() => {
 
 <style scoped>
 .carousel {
- 
-  position: relative;
+  margin-top: 20px;
+
   overflow: hidden;
   
 }
 
 .carousel-slide {
-  width: 115%;
+  width: 100%;
   height: 600px; /* 高度你可以自己調 */
   background-size: cover;
-  background-position: center;
+  background-position: center ;
   background-repeat: no-repeat;
 }
 

@@ -1,8 +1,9 @@
 <template>
   <div v-if="isOpen" class="overlay" @click.self="closeMenu">
-    <div class="side-menu" :class="{ open: isOpen }">
+    <div class="side-menu fixed top-0 left-0 h-full w-[75%] sm:w-[240px] md:w-[320px] bg-white shadow-lg p-4 sm:p-6 flex flex-col justify-between transition-all duration-300 " 
+    :class="{   'left-0': isOpen,  '-left-[75%] sm:-left-[260px] lg:-left-[320px]': !isOpen }">
       <!-- 標題 -->
-      <div class="menu-header">
+      <div class="menu-header text-base sm:text-xl font-bold mb-2">
         <h2>陪伴型照護機器人</h2>
         <hr />
       </div>
@@ -46,8 +47,8 @@ defineProps({
 .side-menu {
   position: fixed;
   top: 0;
-  left: -260px; 
-  width: 260px;
+  /* left: -160px; 
+  width: 260px; */
   height: 100vh;
   background: white;
   box-shadow: 2px 0 5px rgba(0,0,0,0.2);
@@ -62,10 +63,11 @@ defineProps({
   left: 0; 
 }
 
-.menu-header h2 {
+/* .menu-header h2 {
   margin-bottom: 10px;
   font-size: 27px;
-}
+} */
+
 .menu-header hr {
   margin-top: 20px;
   margin-bottom: 20px;
