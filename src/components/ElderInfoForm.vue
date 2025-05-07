@@ -14,7 +14,7 @@
             <label><input type="radio" value="female" v-model="elder.gender" /> 女性</label>
           </div>
         </div>
-  
+        
         <!-- 身高與體重 -->
         <div class="form-row-physical">
           <div class="form-group">
@@ -92,19 +92,7 @@
         <div class="form-group1 form-full">
           <label class="required-label">睡眠習慣:</label>
           <div id="sleep-wake-time">
-            <div class="time-row">
-              <label>晚上睡覺時間:</label>
-              <select v-model="elder.sleepHour">
-                <option value="">--</option>
-                <option v-for="h in 24" :key="h" :value="padZero(h - 1)">{{ padZero(h - 1) }}</option>
-              </select>
-              :
-              <select v-model="elder.sleepMinute">
-                <option value="">--</option>
-                <option v-for="m in [0,15,30,45]" :key="m" :value="padZero(m)">{{ padZero(m) }}</option>
-              </select>
-            </div>
-  
+            
             <div class="time-row">
               <label>早上起床時間:</label>
               <select v-model="elder.wakeHour">
@@ -117,7 +105,7 @@
                 <option v-for="m in [0,15,30,45]" :key="m" :value="padZero(m)">{{ padZero(m) }}</option>
               </select>
             </div>
-  
+            <br>
             <div class="time-row">
               <label>中午午睡時間:</label>
               <select v-model="elder.napHour">
@@ -126,6 +114,19 @@
               </select>
               :
               <select v-model="elder.napMinute">
+                <option value="">--</option>
+                <option v-for="m in [0,15,30,45]" :key="m" :value="padZero(m)">{{ padZero(m) }}</option>
+              </select>
+            </div>
+            <br>
+            <div class="time-row">
+              <label>晚上睡覺時間:</label>
+              <select v-model="elder.sleepHour">
+                <option value="">--</option>
+                <option v-for="h in 24" :key="h" :value="padZero(h - 1)">{{ padZero(h - 1) }}</option>
+              </select>
+              :
+              <select v-model="elder.sleepMinute">
                 <option value="">--</option>
                 <option v-for="m in [0,15,30,45]" :key="m" :value="padZero(m)">{{ padZero(m) }}</option>
               </select>

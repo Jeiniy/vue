@@ -3,10 +3,7 @@
       <ElderInfoForm />
       <EmergencyContact title="緊急聯絡人1" />
       <EmergencyContact title="緊急聯絡人2" />
-  
-      <div class="save-button-wrapper">
-        <button class="save-button" @click="handleSave">儲存</button>
-      </div>
+
     </div>
   </template>
   
@@ -23,7 +20,7 @@
   <style scoped>
   .enter-view {
     padding: 40px;
-    background: #fdfdfd;
+  
   }
   .save-button-wrapper {
     display: flex;

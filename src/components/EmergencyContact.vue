@@ -75,34 +75,7 @@
   ]
   </script>
   
-  <style scoped>
-  .form-wrapper1 {
-    padding: 20px;
-    margin-bottom: 20px;
-    background: #fff9f0;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-  }
-  .form-title {
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-  .form-row-basic {
-    display: flex;
-    gap: 20px;
-  }
-  .small-input1 {
-    padding: 8px;
-    width: 150px;
-  }
-  .address-group select,
-  .address-group input {
-    margin-right: 10px;
-    padding: 6px;
-  }
-  .required-label::after {
-    content: '*';
-    color: red;
-    margin-left: 4px;
-  }
-  </style>
+  
+<style scoped>
+@import '@/assets/form.css';
+</style>
