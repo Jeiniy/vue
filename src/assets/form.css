@@ -16,14 +16,15 @@
   /* 緊急聯絡人表單區塊，靠右 */
   .form-wrapper1,
   .form-wrapper2 {
-      width: 80%;
-      padding: 15px 20px;
-      background-color: rgba(255, 255, 255, 0.8); 
-      border-radius: 15px;                       
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);   
-      float: left;                               
-      clear: both;                               
-      margin-bottom: 10px;
+    width: 80%;
+    margin: 1px auto;
+    padding: 10px 30px;
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 15px;                       
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);   
+    float: left;                               
+    clear: both;                               
+    margin-bottom: 10px;   
   }
   
   
