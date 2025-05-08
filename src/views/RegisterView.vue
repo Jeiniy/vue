@@ -166,7 +166,7 @@ async function register() {
   }
 
   try {
-    const response = await axios.post('http://你的後端網址/api/register', {
+    const response = await axios.post('http://localhost:3000/api/register', {
       name: name.value,
       phone: phone.value,
       email: email.value,

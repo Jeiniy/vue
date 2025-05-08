@@ -1,46 +1,55 @@
 <template>
-    <main class="login-page-main">
-      <div class="login-box">
-        <div class="input-box">
-          <i class="fas fa-envelope"></i>
-          <input type="email" id="email"  placeholder="Email" v-model="email" />
-        </div>
-  
-        <div class="input-box">
-          <i class="fas fa-lock"></i>
-          <input type="password" id="password" placeholder="Password" v-model="password" />
-        </div>
-  
-        <div class="btn-group">
-          <router-link to="/register">
-            <button class="btn register">註冊</button>
-          </router-link>
-          <router-link to="/control">
-            <button class="btn login">登入</button>
-          </router-link>
-        </div>
+  <main class="login-page-main">
+    <div class="login-box">
+      <div class="input-box">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="email" placeholder="Email" v-model="email" />
       </div>
-      <!-- <div class="circle"></div> -->
-      <!-- <svg width="100" height="100">
-            <polygon points="50,15 90,85 10,85" fill="#e67e22" />
-      </svg> -->
 
-      <!-- <div class="rounded-box"></div> -->
-    </main>
-    
-  </template>
-  
-  <script>
-  export default {
-    name: 'LoginPage',
-    data() {
-      return {
-        email: '',
-        password: ''
-      }
+      <div class="input-box">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" placeholder="Password" v-model="password" />
+      </div>
+
+      <div class="btn-group">
+        <router-link to="/register">
+          <button class="btn register">註冊</button>
+        </router-link>
+        <button class="btn login" @click="login">登入</button>
+      </div>
+    </div>
+  </main>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import axios from 'axios'
+import { useRouter } from 'vue-router'
+
+const email = ref('')
+const password = ref('')
+const router = useRouter()
+
+async function login() {
+  try {
+    const response = await axios.post('http://localhost:3000/api/login', {
+      email: email.value,
+      password: password.value
+    })
+
+    if (response.data.success) {
+      alert('登入成功！')
+      router.push('/control')
+    } else {
+      alert(response.data.message || '登入失敗')
     }
+  } catch (error) {
+    alert('連線失敗，請稍後再試')
+    console.error(error)
   }
-  </script>
+}
+</script>
+
   
   <style scoped>
   .login-page-main {
