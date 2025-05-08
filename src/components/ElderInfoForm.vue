@@ -6,7 +6,7 @@
         <div class="form-row-basic">
           <div class="form-group">
             <label class="required-label">姓名:</label>
-            <input type="text" class="small-input1" v-model="elder.name" required />
+            <input type="text" class="small-input" v-model="elder.name" required placeholder="請輸入姓名"  />
           </div>
           <div class="form-group">
             <label class="required-label">性別:</label>
@@ -41,7 +41,7 @@
               <option v-for="district in districts" :key="district">{{ district }}</option>
             </select>
   
-            <input type="text" v-model="elder.detailAddress" placeholder="請輸入街道或門牌號" />
+            <input type="text" class="small-input1" v-model="elder.detailAddress" placeholder="請輸入街道或門牌號" />
           </div>
         </div>
   
