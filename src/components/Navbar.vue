@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar w-full max-w-screen-xl fixed top-0 left-0 w-full z-50 shadow-md ">
+  <nav class="navbar w-full  fixed top-0 left-0 w-full z-50 shadow-md ">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-8 h-[85px] flex items-center justify-between">
         <div class="menu-toggle" @click="$emit('toggle-menu')">
           <span class="bar"></span>

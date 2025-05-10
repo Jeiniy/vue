@@ -31,6 +31,15 @@ const password = ref('')
 const router = useRouter()
 
 async function login() {
+  if(!email.value || !password.value){
+    alert('請輸入Email和密碼')
+    return
+  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if(!emailRegex.test(email.value)){
+    alert('Email格式錯誤')
+    return
+  }
   try {
     const response = await axios.post('http://localhost:3000/api/login', {
       email: email.value,
