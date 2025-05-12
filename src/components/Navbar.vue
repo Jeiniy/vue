@@ -19,9 +19,7 @@
           <router-link to="/login">註冊 & 登入</router-link>
         </li>
         <li v-else>
-          <button @click="logout" class="text-[#ba6666] text-[18px] hover:bg-[#f5d8d8] px-2 py-1 rounded">
-            登出
-          </button>
+          <router-link to="/" @click="logout">登出</router-link>
         </li>
       </ul>
     
