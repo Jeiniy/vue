@@ -52,8 +52,7 @@ async function login() {
       localStorage.setItem('isLoggedIn', 'true')
       localStorage.setItem('userName', response.data.name)
 
-      await nextTick() // ✅ 等 Vue 畫面反應完畢
-      router.push('/control')  // 再導頁，就不會出現畫面沒變的問題了
+      window.location.href = '/control'
 
     } else {
       alert(response.data.message || '登入失敗')
