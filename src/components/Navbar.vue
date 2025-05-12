@@ -1,13 +1,13 @@
 <template>
-  <nav class="navbar w-full fixed top-0 left-0 z-50 shadow-md">
-    <div class="max-w-screen-2xl mx-auto px-4 sm:px-8 h-[85px] flex items-center justify-between w-full">
-      <!-- 左側：漢堡選單與 Logo -->
-      <div class="flex items-center">
-        <div class="menu-toggle mr-4" @click="$emit('toggle-menu')">
+  <nav class="navbar w-full fixed top-0 left-0 z-50 shadow-md ">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-8 h-[85px] flex items-center justify-between">
+        <div class="menu-toggle" @click="$emit('toggle-menu')">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </div>
+      </div>
+      <div>
         <h1 class="logo text-base sm:text-xl font-bold text-black whitespace-nowrap truncate">
           陪伴型照護機器人
         </h1>
@@ -24,7 +24,7 @@
           </button>
         </li>
       </ul>
-    </div>
+    
   </nav>
 </template>
 
