@@ -48,6 +48,8 @@ async function login() {
 
     if (response.data.success) {
       alert('登入成功！')
+      localStorage.setItem('isLoggedIn', 'true')
+      localStorage.setItem('userName', response.data.name)
       router.push('/control')
     } else {
       alert(response.data.message || '登入失敗')

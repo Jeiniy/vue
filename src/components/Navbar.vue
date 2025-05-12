@@ -29,24 +29,34 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const isLoggedIn = ref(false)
+const userName = ref('')
 
-// 初始化時檢查 localStorage 中是否登入
+// 初始化
 onMounted(() => {
   isLoggedIn.value = localStorage.getItem('isLoggedIn') === 'true'
+  userName.value = localStorage.getItem('userName') || ''
 })
 
-// 登出功能
+// 即時同步
+watchEffect(() => {
+  isLoggedIn.value = localStorage.getItem('isLoggedIn') === 'true'
+  userName.value = localStorage.getItem('userName') || ''
+})
+
 function logout() {
   localStorage.setItem('isLoggedIn', 'false')
+  localStorage.removeItem('userName')
   isLoggedIn.value = false
+  userName.value = ''
   alert('您已成功登出')
-  router.push('/') // 登出後回首頁
+  router.push('/')
 }
+
 </script>
 
 <style scoped>
