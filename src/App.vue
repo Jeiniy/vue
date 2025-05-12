@@ -16,9 +16,6 @@ import SideMenu from './components/SideMenu.vue'
 import Footer from './components/Footer.vue'
 import { useRoute } from 'vue-router' 
 
-const isLoggedIn = ref(localStorage.getItem('isLoggedIn') === 'true')
-provide('isLoggedIn', isLoggedIn)  // ✅ 提供全域狀態給其他元件
-
 const showSideMenu = ref(false)
 const route = useRoute()
 
