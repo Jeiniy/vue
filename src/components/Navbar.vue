@@ -7,12 +7,12 @@
           <span class="bar"></span>
         </div>
       </div>
-      <div>
-        <h1 class="logo text-base sm:text-xl font-bold text-black whitespace-nowrap truncate">
-          陪伴型照護機器人
-        </h1>
-      </div>
-
+        <div>
+          <h1 class="logo text-base sm:text-xl font-bold text-black whitespace-nowrap truncate">
+            陪伴型照護機器人
+          </h1>
+        </div>
+      
       <!-- 右側：根據登入狀態切換 -->
       <ul class="nav-list flex space-x-4">
         <li v-if="!isLoggedIn">
@@ -45,7 +45,6 @@ onMounted(() => {
 // 即時同步
 watchEffect(() => {
   isLoggedIn.value = localStorage.getItem('isLoggedIn') === 'true'
-  userName.value = localStorage.getItem('userName') || ''
 })
 
 function logout() {
