@@ -1,7 +1,7 @@
 <template>
   <div class="carousel w-full max-w-screen-xl ">
     <div 
-      class="carousel-slide " 
+      class="carousel-slide  h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] " 
       :style="{ backgroundImage: `url(${images[currentIndex]})` }"
     >
     </div>

@@ -1,23 +1,56 @@
 <template>
-  <nav class="navbar w-full  fixed top-0 left-0 w-full z-50 shadow-md ">
-    <div class="max-w-screen-2xl mx-auto px-4 sm:px-8 h-[85px] flex items-center justify-between">
-        <div class="menu-toggle" @click="$emit('toggle-menu')">
+  <nav class="navbar w-full fixed top-0 left-0 z-50 shadow-md">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-8 h-[85px] flex items-center justify-between w-full">
+      <!-- 左側：漢堡選單與 Logo -->
+      <div class="flex items-center">
+        <div class="menu-toggle mr-4" @click="$emit('toggle-menu')">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </div>
+        <h1 class="logo text-base sm:text-xl font-bold text-black whitespace-nowrap truncate">
+          陪伴型照護機器人
+        </h1>
       </div>
-      <h1 class="logo text-base sm:text-xl font-bold text-black whitespace-nowrap truncate ml-4">陪伴型照護機器人</h1>
-   
-    <ul class="nav-list">
-      <li>
-        <router-link to="/login">註冊 & 登入</router-link>
-      </li>
-    </ul>
+
+      <!-- 右側：根據登入狀態切換 -->
+      <ul class="nav-list flex space-x-4">
+        <li v-if="!isLoggedIn">
+          <router-link to="/login">註冊 & 登入</router-link>
+        </li>
+        <li v-else>
+          <button @click="logout" class="text-[#ba6666] text-[18px] hover:bg-[#f5d8d8] px-2 py-1 rounded">
+            登出
+          </button>
+        </li>
+      </ul>
+    </div>
   </nav>
 </template>
 
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+const isLoggedIn = ref(false)
+
+// 初始化時檢查 localStorage 中是否登入
+onMounted(() => {
+  isLoggedIn.value = localStorage.getItem('isLoggedIn') === 'true'
+})
+
+// 登出功能
+function logout() {
+  localStorage.setItem('isLoggedIn', 'false')
+  isLoggedIn.value = false
+  alert('您已成功登出')
+  router.push('/') // 登出後回首頁
+}
+</script>
+
 <style scoped>
+/* 原本的樣式保持不變 */
 .navbar {
   max-width: none;
   margin: 0;
@@ -29,39 +62,33 @@
   padding: 0px 30px;
   height: 85px;
 }
-
 .menu-toggle {
   display: flex;
   flex-direction: column;
   cursor: pointer;
 }
-
 .bar {
   width: 25px;
   height: 3px;
   background-color: black;
   margin: 3.5px 0;
 }
-
 .logo {
   font-size: 25px;
   margin-left: 16px;
   color: #000;
 }
-
 .nav-list {
   list-style: none;
   margin-left: auto;
 }
-
 .nav-list a {
   color: #ba6666;
   font-size: 18px;
 }
-
 .nav-list a:hover {
   color: #ba6666;
-  background-color: #f5d8d8; 
+  background-color: #f5d8d8;
   transform: translateX(5px);
 }
 </style>
