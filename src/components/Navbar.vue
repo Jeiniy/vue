@@ -18,7 +18,7 @@
         <li v-if="!isLoggedIn">
           <router-link to="/register">註冊</router-link>
         </li>
-        <li>|</li>
+         <li v-if="!isLoggedIn">|</li>
         <li v-if="!isLoggedIn">
           <router-link to="/login">登入</router-link>
         </li>
