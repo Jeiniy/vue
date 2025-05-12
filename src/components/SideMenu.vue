@@ -22,7 +22,7 @@
 
       <!-- 底部 -->
       <div class="menu-footer">
-        <router-link to="/login">登入/註冊</router-link>
+        <router-link to="/login">登入</router-link>
       </div>
     </div>
   </div>

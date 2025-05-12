@@ -11,10 +11,8 @@
         <input type="password" id="password" placeholder="Password" v-model="password" />
       </div>
 
-      <div class="btn-group">
-        <router-link to="/register">
-          <button class="btn register">註冊</button>
-        </router-link>
+      <div class="btn-group ">
+        <button class="btn register" @click="goToRegister">註冊</button>
         <button class="btn login" @click="login">登入</button>
       </div>
     </div>
@@ -61,6 +59,9 @@ async function login() {
       alert('連線失敗，請稍後再試')
       console.error(error)
     }
+}
+function goToRegister() {
+  router.push('/register')
 }
 </script>
 
@@ -119,7 +120,7 @@ async function login() {
     display: flex;
     justify-content: center;
     gap: 30px;
-    width: 300px;
+    width: 00px;
     margin: 0 auto;
     margin-top: 20px;
   }
@@ -128,7 +129,7 @@ async function login() {
   .btn {
     min-width: 120px;   /* 保底寬度 */
     width: 45%;
-    padding: 12px 20px;
+    padding: 10px 20px;
     border: none;
     border-radius: 999px !important;
     font-size: 16px;

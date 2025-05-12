@@ -14,15 +14,19 @@
         </div>
       
       <!-- 右側：根據登入狀態切換 -->
-      <ul class="nav-list flex space-x-4">
+      <ul class="nav-list flex items-center space-x-4">
         <li v-if="!isLoggedIn">
-          <router-link to="/login">註冊 & 登入</router-link>
+          <router-link to="/register">註冊</router-link>
+        </li>
+        <li>|</li>
+        <li v-if="!isLoggedIn">
+          <router-link to="/login">登入</router-link>
         </li>
         <li v-else>
           <router-link to="/" @click="logout">登出</router-link>
         </li>
       </ul>
-    
+
   </nav>
 </template>
 
@@ -33,6 +37,8 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const isLoggedIn = ref(false)
 const userName = ref('')
+
+
 
 // 初始化
 onMounted(() => {
@@ -86,9 +92,19 @@ function logout() {
   color: #000;
 }
 .nav-list {
+  display: flex; 
+  top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
   list-style: none;
   margin-left: auto;
 }
+
+.nav-list li {
+    margin: 0 8px;
+    white-space: nowrap;
+}
+
 .nav-list a {
   color: #ba6666;
   font-size: 18px;
