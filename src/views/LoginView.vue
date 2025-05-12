@@ -24,6 +24,7 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import { nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 
 const email = ref('')
@@ -50,14 +51,17 @@ async function login() {
       alert('登入成功！')
       localStorage.setItem('isLoggedIn', 'true')
       localStorage.setItem('userName', response.data.name)
-      router.push('/control')
+
+      await nextTick() // ✅ 等 Vue 畫面反應完畢
+      router.push('/control')  // 再導頁，就不會出現畫面沒變的問題了
+
     } else {
       alert(response.data.message || '登入失敗')
     }
-  } catch (error) {
-    alert('連線失敗，請稍後再試')
-    console.error(error)
-  }
+    } catch (error) {
+      alert('連線失敗，請稍後再試')
+      console.error(error)
+    }
 }
 </script>
 
