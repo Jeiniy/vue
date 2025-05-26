@@ -81,6 +81,8 @@ const tsLabel = computed(() =>
   ts.value ? new Date(ts.value * 1000).toLocaleString() : '—'
 
 )
-
+function goBack() {
+  router.go(-1)
+}
 </script>
 

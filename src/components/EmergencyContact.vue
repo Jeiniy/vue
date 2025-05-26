@@ -54,6 +54,7 @@
   
   <script setup>
   import { reactive, defineProps, ref  } from 'vue'
+  import axios from 'axios'
 
   const props = defineProps({
     title: String
@@ -66,6 +67,10 @@
     district: '',
     detailAddress: '',
     relationship: ''
+  })
+
+    defineExpose({
+    contact
   })
 
   //   watch(() => contact.county, () => {

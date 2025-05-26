@@ -1,7 +1,7 @@
 <template>
     <div class="form-wrapper">
       <h1 class="form-title">輸入年長者資訊</h1>
-      <form class="form-area">
+      <form class="form-area" @submit.prevent="submitForm">
         <!-- 姓名與性別 -->
         <div class="form-row-basic">
           <div class="form-group">
@@ -154,7 +154,8 @@
   
   <script setup>
   import { reactive, ref } from 'vue'
-  
+  import axios from 'axios'
+
   const elder = reactive({
     name: '',
     gender: '',
@@ -177,6 +178,9 @@
     napMinute: '',
     hobbies: [],
     hobbyOther: ''
+  })
+    defineExpose({
+    elder
   })
   
   const counties = Object.keys({
@@ -219,6 +223,8 @@
   const padZero = (num) => {
     return num.toString().padStart(2, '0')
   }
+
+
   </script>
   
   <style scoped>

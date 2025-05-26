@@ -1,9 +1,9 @@
 <template>
   <div class="enter-view">
     <div class="form-container">
-      <ElderInfoForm />
-      <EmergencyContact title="緊急聯絡人1" />
-      <EmergencyContact title="緊急聯絡人2" />
+      <ElderInfoForm ref="elderFormRef" />
+      <EmergencyContact ref="contact1Ref" title="緊急聯絡人1" />
+      <EmergencyContact ref="contact2Ref" title="緊急聯絡人2" />
 
       <!-- 按鈕放在所有表單最下面 -->
       <div class="save-button-wrapper">
@@ -14,11 +14,33 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import axios from 'axios'
 import ElderInfoForm from '@/components/ElderInfoForm.vue'
 import EmergencyContact from '@/components/EmergencyContact.vue'
 
-const handleSave = () => {
-  alert('點擊儲存，可在此處新增表單驗證或送出資料至後端')
+const elderFormRef = ref()
+const contact1Ref = ref()
+const contact2Ref = ref()
+
+const handleSave = async () => {
+  const elder = elderFormRef.value.elderData
+  const contact1 = contact1Ref.value.contactData
+  const contact2 = contact2Ref.value.contactData
+
+  const payload = {
+    elder,
+    contact1,
+    contact2
+  }
+
+  try {
+    const res = await axios.post('http://localhost:3000/api/saveData', payload)
+    alert('資料已成功送出')
+  } catch (err) {
+    alert('送出失敗，請稍後再試')
+    console.error(err)
+  }
 }
 </script>
 
