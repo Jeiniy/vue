@@ -24,9 +24,9 @@ const contact1Ref = ref()
 const contact2Ref = ref()
 
 const handleSave = async () => {
-  const elder = elderFormRef.value.elderData
-  const contact1 = contact1Ref.value.contactData
-  const contact2 = contact2Ref.value.contactData
+  const elder = elderFormRef.value.elder
+  const contact1 = contact1Ref.value.contact
+  const contact2 = contact2Ref.value.contact
 
   const payload = {
     elder,
