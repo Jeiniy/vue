@@ -1,26 +1,26 @@
 <template>
   <div v-if="isOpen" class="overlay" @click.self="closeMenu">
-    <div class="side-menu fixed top-0 left-0 h-full w-[75%] sm:w-[240px] md:w-[320px] bg-white shadow-lg p-4 sm:p-6 flex flex-col justify-between transition-all duration-300 " 
-    :class="{   'left-0': isOpen,  '-left-[75%] sm:-left-[260px] lg:-left-[320px]': !isOpen }">
+    <div
+      class="side-menu fixed top-0 left-0 h-full w-[75%] sm:w-[240px] md:w-[320px] bg-white shadow-lg p-4 sm:p-6 flex flex-col justify-between transition-all duration-300"
+      :class="{
+        'left-0': isOpen,
+        '-left-[75%] sm:-left-[260px] lg:-left-[320px]': !isOpen,
+      }"
+    >
       <!-- 標題 -->
       <div class="menu-header text-base sm:text-xl font-bold mb-2">
         <h2>陪伴型照護機器人</h2>
         <hr />
       </div>
 
-      <!-- 中間選單 -->
-      <ul class="menu-list">
-        <li>
-          <router-link to="/"><img :src="img1" />回首頁 </router-link>
-        </li>
+      <!-- 未登入選單（僅顯示前三項） -->
+      <ul class="menu-list" v-if="!isLoggedIn">
+        <li><router-link to="/"><img :src="img1" /> 回首頁</router-link></li>
         <li><a href="#"><img :src="img2" /> 關於我們 </a></li>
         <li><a href="#"><img :src="img3" /> 使用教學 </a></li>
-        <li>
-          <router-link to="/change"><img :src="img4" /> 個人資料 </router-link>
-        </li>
       </ul>
 
-      <!-- 底部 -->
+      <!-- 底部登入連結 -->
       <div class="menu-footer">
         <router-link to="/login">登入</router-link>
       </div>
@@ -28,7 +28,9 @@
   </div>
 </template>
 
+
 <script setup>
+import { ref } from 'vue'
 import img1 from '@/assets/image/home.png'
 import img2 from '@/assets/image/graduate.png'
 import img3 from '@/assets/image/assignment.png'
@@ -38,6 +40,9 @@ defineProps({
   isOpen: Boolean,
   closeMenu: Function
 })
+
+const isLoggedIn = ref(false) // 預設未登入
+
 </script>
 
 <style scoped>

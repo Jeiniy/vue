@@ -13,7 +13,7 @@
 
       <div class="btn-group ">
         <button class="btn register" @click="goToRegister">註冊</button>
-        <button class="btn login" @click="login">登入</button>
+        <button class="btn login" @click="login">登入</button>  
       </div>
     </div>
   </main>
@@ -21,48 +21,102 @@
 
 <script setup>
 import { ref } from 'vue'
-import axios from 'axios'
-import { nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 
 const email = ref('')
 const password = ref('')
 const router = useRouter()
 
-async function login() {
-  if(!email.value || !password.value){
+// 假資料：可自行更改
+const dummyUsers = [
+  {
+    email: 'test@example.com',
+    password: '123456',
+    name: 'Test User'
+  },
+  {
+    email: 'admin@example.com',
+    password: 'admin123',
+    name: 'Admin'
+  }
+]
+
+function login() {
+  if (!email.value || !password.value) {
     alert('請輸入Email和密碼')
     return
   }
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if(!emailRegex.test(email.value)){
+  if (!emailRegex.test(email.value)) {
     alert('Email格式錯誤')
     return
   }
-  try {
-    const response = await axios.post('http://localhost:3000/api/login', {
-      email: email.value,
-      password: password.value
-    })
 
-    if (response.data.success) {
-      alert('登入成功！')
-      localStorage.setItem('isLoggedIn', 'true')
-      localStorage.setItem('userName', response.data.name)
+  // 用前端寫死的帳號密碼比對
+  const user = dummyUsers.find(
+    u => u.email === email.value && u.password === password.value
+  )
 
-      window.location.href = '/control'
+  if (user) {
+    alert('登入成功！')
+    localStorage.setItem('isLoggedIn', 'true')
+    localStorage.setItem('userName', user.name)
 
-    } else {
-      alert(response.data.message || '登入失敗')
-    }
-    } catch (error) {
-      alert('連線失敗，請稍後再試')
-      console.error(error)
-    }
+    window.location.href = '/control'  // 或 router.push('/control')
+  } else {
+    alert('登入失敗，帳號或密碼錯誤')
+  }
 }
+
 function goToRegister() {
   router.push('/register')
 }
+
+
+// import { ref } from 'vue'
+// import axios from 'axios'
+// import { nextTick } from 'vue'
+// import { useRouter } from 'vue-router'
+
+// const email = ref('')
+// const password = ref('')
+// const router = useRouter()
+
+// async function login() {
+//   if(!email.value || !password.value){
+//     alert('請輸入Email和密碼')
+//     return
+//   }
+//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+//   if(!emailRegex.test(email.value)){
+//     alert('Email格式錯誤')
+//     return
+//   }
+//   try {
+//     const response = await axios.post('http://localhost:3000/api/login', {
+//       email: email.value,
+//       password: password.value
+//     })
+
+//     if (response.data.success) {
+//       alert('登入成功！')
+//       localStorage.setItem('isLoggedIn', 'true')
+//       localStorage.setItem('userName', response.data.name)
+
+//       window.location.href = '/control'
+
+//     } else {
+//       alert(response.data.message || '登入失敗')
+//     }
+//     } catch (error) {
+//       alert('連線失敗，請稍後再試')
+//       console.error(error)
+//     }
+// }
+// function goToRegister() {
+//   router.push('/register')
+// }
 </script>
 
   

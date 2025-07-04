@@ -1,14 +1,13 @@
 
   /* 左側主要表單區塊 */
   .form-wrapper {
-    width: 80%;
-    
-    margin: 1px auto;
+    width: 120%;
+    margin: 0;   
     padding: 20px 50px;
     background-color: rgba(255, 255, 255, 0.8); 
     border-radius: 15px;                       
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);   
-    float: left;                               
+                                  
     clear: both;                               
     margin-bottom: 10px;                       
               
