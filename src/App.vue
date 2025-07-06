@@ -9,6 +9,8 @@
     <!-- 側邊選單 -->
     <SideMenu :isOpen="showSideMenu" :closeMenu="closeMenu" />
     
+    
+
     <!-- 主要內容 -->
     <div class="flex-grow">
       <router-view />
@@ -64,5 +66,3 @@ html, body, #app {
   background: #fff;
 }
 </style>
-
-

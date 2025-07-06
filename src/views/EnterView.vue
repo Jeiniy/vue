@@ -12,6 +12,10 @@
             <img :src="img2" alt="教學" class="menu-icon" />
             <span>使用教學</span>
         </li>
+        <li class="menu-item" @click="goToControl">
+            <img :src="img5" alt="分析" class="menu-icon" />
+            <span>分析頁面</span>
+        </li>
         <li class="menu-item" @click="goToEnter">
             <img :src="img3" alt="輸入" class="menu-icon" />
             <span>年長者資訊</span>
@@ -40,23 +44,41 @@ import img1 from '@/assets/image/home.png'
 import img2 from '@/assets/image/assignment.png' 
 import img3 from '@/assets/image/edit.png' 
 import img4 from '@/assets/image/settings.png' 
+import img5 from '@/assets/image/analytics.png' 
+
 import { ref } from 'vue'
 import axios from 'axios'
 import ElderInfoForm from '@/components/ElderInfoForm.vue'
 
 const elderFormRef = ref()
-const contact1Ref = ref()
-const contact2Ref = ref()
+// const contact1Ref = ref()
+// const contact2Ref = ref()
+
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+
+function goToHome() {
+  router.push('/')
+}
+
+function goToEnter() {
+  router.push('/Enter')
+}
+
+function goToControl() {
+  router.push('/control')
+}
 
 const handleSave = async () => {
   const elder = elderFormRef.value.elder
-  const contact1 = contact1Ref.value.contact
-  const contact2 = contact2Ref.value.contact
+  // const contact1 = contact1Ref.value.contact
+  // const contact2 = contact2Ref.value.contact
 
   const payload = {
     elder,
-    contact1,
-    contact2
+    // contact1,
+    // contact2
   }
 
   try {
