@@ -1,37 +1,20 @@
 <template>
   <div class="schedule-card">
+    <!-- 上方日期與新增活動按鈕 -->
     <div class="calendar-header">
       <div class="calendar-date">{{ formattedDate }}</div>
-      <button class="add-button" @click="isAdding = true">新增活動</button>
+      <button class="add-button" @click="goToSchedule">新增活動</button>
     </div>
 
-    <v-calendar :attributes="attributes" @dayclick="selectDate" color="indigo" />
+    <!-- 行事曆元件（v-calendar） -->
+    <v-calendar
+      :attributes="attributes"
+      @dayclick="selectDate"
+      color="indigo"
+    />
 
-    <!-- 新增活動表單 -->
-    <div v-if="selectedDate && isAdding" class="event-form">
-      <div class="event-title">新增活動</div>
-      <div class="time-select">
-        <label>時間:</label>
-        <select v-model="hour">
-          <option value="">--</option>
-          <option v-for="h in 24" :key="h" :value="padZero(h - 1)">
-            {{ padZero(h - 1) }}
-          </option>
-        </select>
-        :
-        <select v-model="minute">
-          <option value="">--</option>
-          <option v-for="m in [0, 15, 30, 45]" :key="m" :value="padZero(m)">
-            {{ padZero(m) }}
-          </option>
-        </select>
-      </div>
-      <input v-model="eventContent" placeholder="輸入活動內容" class="event-input" />
-      <input v-model="eventUser" placeholder="由誰安排" class="event-input" />
-      <button @click="addEvent" class="save-button">儲存活動</button>
-    </div>
 
-    <!-- 活動列表 -->
+    <!-- 活動清單列表 -->
     <div v-if="selectedDate && sortedEvents.length" class="event-list">
       <h4>活動安排：</h4>
       <ul>
@@ -44,42 +27,61 @@
       </ul>
     </div>
 
+    <!-- 無活動時顯示 -->
     <div v-else-if="selectedDate && !isAdding" class="no-event">無安排</div>
   </div>
 </template>
 
 
 
+
 <script setup>
 import { ref, computed } from 'vue'
 
+// 📌 目前選中的日期（格式：YYYY-MM-DD）
 const selectedDate = ref(new Date().toISOString().split('T')[0])
+
+// 📌 活動輸入欄資料
 const hour = ref('')
 const minute = ref('')
 const eventContent = ref('')
 const eventUser = ref('')
+
+// 📌 控制是否正在新增活動
 const isAdding = ref(false)
+
+// 📌 所有活動紀錄（以日期分類）
 const events = ref({})
 
+// ✅ 點日期後：設定為選中的日期並關閉新增表單
 const selectDate = ({ date }) => {
-  selectedDate.value = date.toLocaleDateString('sv-SE')
+  selectedDate.value = date.toLocaleDateString('sv-SE') // sv-SE 是 yyyy-mm-dd 格式
   isAdding.value = false
 }
 
+// ⏱ 將數字補 0（例如 8 變成 08）
 const padZero = (n) => n.toString().padStart(2, '0')
 
+// ✅ 新增活動邏輯
 const addEvent = () => {
   if (!hour.value || !minute.value || !eventContent.value || !eventUser.value) return
+
   const time = `${hour.value}:${minute.value}`
+
   const newItem = {
     time,
     content: eventContent.value.trim(),
     user: eventUser.value.trim()
   }
+
+  // 若該日期尚無活動，先建立陣列
   if (!events.value[selectedDate.value]) {
     events.value[selectedDate.value] = []
   }
+
   events.value[selectedDate.value].push(newItem)
+
+  // 清空欄位
   hour.value = ''
   minute.value = ''
   eventContent.value = ''
@@ -87,6 +89,7 @@ const addEvent = () => {
   isAdding.value = false
 }
 
+// ✅ 刪除活動
 const deleteEvent = (index) => {
   events.value[selectedDate.value].splice(index, 1)
   if (events.value[selectedDate.value].length === 0) {
@@ -94,12 +97,14 @@ const deleteEvent = (index) => {
   }
 }
 
+// ✅ 將當天的活動排序（依時間）
 const sortedEvents = computed(() => {
   return [...(events.value[selectedDate.value] || [])].sort((a, b) =>
     a.time.localeCompare(b.time)
   )
 })
 
+// ✅ 轉換日期格式（顯示在標題區）
 const formattedDate = computed(() => {
   const date = new Date(selectedDate.value)
   return date.toLocaleDateString('zh-TW', {
@@ -110,6 +115,7 @@ const formattedDate = computed(() => {
   })
 })
 
+// ✅ 給 v-calendar 的標記（小圓點、popover）
 const attributes = computed(() =>
   Object.entries(events.value).map(([date, evts]) => ({
     key: date,
@@ -121,7 +127,14 @@ const attributes = computed(() =>
   }))
 )
 
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const goToSchedule = () => {
+  router.push('/schedule')
+}
 </script>
+
 
 
 <style scoped>

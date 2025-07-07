@@ -12,9 +12,21 @@
             <img :src="img2" alt="教學" class="menu-icon" />
             <span>使用教學</span>
         </li>
+        <li class="menu-item" @click="goToControl" >
+            <img :src="img5" alt="分析" class="menu-icon" />
+            <span>分析頁面</span>
+        </li>
+         <li class="menu-item" @click="goToSchedule" >
+            <img :src="img7" alt="時程安排" class="menu-icon" />
+            <span>時程安排</span>
+        </li>
         <li class="menu-item" @click="goToEnter">
-            <img :src="img3" alt="輸入" class="menu-icon" />
+            <img :src="img3" alt="年長者資訊" class="menu-icon" />
             <span>年長者資訊</span>
+        </li>
+        <li class="menu-item" @click="goToEnter2">
+            <img :src="img6" alt="緊急聯絡人" class="menu-icon" />
+            <span>緊急聯絡人</span>
         </li>
         <li class="menu-item">
             <img :src="img4" alt="設定" class="menu-icon" />
@@ -30,16 +42,36 @@ import img1 from '@/assets/image/home.png'
 import img2 from '@/assets/image/assignment.png' 
 import img3 from '@/assets/image/edit.png' 
 import img4 from '@/assets/image/settings.png' 
+import img5 from '@/assets/image/analytics.png'
+import img6 from '@/assets/image/emergency-call.png'
+import img7 from '@/assets/image/schedule.png'
 
+import { useRouter } from 'vue-router'
 const router = useRouter()
 
-const goToHome = () => {
+function goToHome() {
   router.push('/')
 }
 
-const goToEnter = () => {
-  router.push('/enter')
+function goToSchedule() {
+  router.push('/schedule')
 }
+
+function goToEnter() {
+  router.push('/Enter')
+}
+
+function goToEnter2() {
+  router.push('/Enter2')
+}
+
+function goToControl() {
+  router.push('/control')
+}
+
+// const route = useRoute() // ✅ 取得目前的路由路徑
+// const isActive = (path) => route.path === path
+
 </script>
 
 <style scoped>
@@ -52,6 +84,7 @@ const goToEnter = () => {
 .sidebar {
   background: #ffffff;
   width: 200px;
+  height: 120%;
   padding: 20px;
   border-right: 1px solid #ddd;
 }
@@ -91,6 +124,13 @@ const goToEnter = () => {
   height: 25px;
   filter: brightness(0.7);
   opacity: 0.7; /* 調低明度 */
+}
+
+.menu-icon[alt="緊急聯絡人"] {
+  width: 25px;
+  height: 25px;
+  filter: brightness(0.7);
+  opacity: 0.9;
 }
 
 .logout {

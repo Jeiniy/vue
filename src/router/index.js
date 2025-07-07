@@ -6,6 +6,8 @@ import ControlView from '@/views/ControlView.vue'
 import FallMonitor from '@/views/FallMonitor.vue'
 import ChangeView from '@/views/ChangeView.vue'
 import EnterView from '@/views/EnterView.vue'
+import EnterView2 from '@/views/EnterView2.vue'
+import ScheduleView from '@/views/ScheduleView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,8 +18,9 @@ const router = createRouter({
     { path: '/control', name: 'Control', component: ControlView },
     { path: '/change', name: 'Change', component: ChangeView },
     { path: '/enter', name: 'Enter', component: EnterView },
+    { path: '/enter2', name: 'Enter2', component: EnterView2 },
     { path: '/fall', component: FallMonitor },
-    { path: '/schedules', name: 'Schedules',component: () => import('@/components/Schedules.vue')}
+    { path: '/schedule', name: 'Schedule',component: ScheduleView}
   ]
 })
 

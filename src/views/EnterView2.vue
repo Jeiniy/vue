@@ -1,11 +1,12 @@
 <template>
   <div class="container">
     <SideControl />
-    
-    <div class="main-view">
+    <div class="enter-view">
       <div class="form-container">
-        <ElderInfoForm ref="elderFormRef" />
+        <EmergencyContact title="緊急聯絡人 1" ref="contact1Ref" />
+        <EmergencyContact title="緊急聯絡人 2" ref="contact2Ref" />
 
+        <!-- 按鈕放在所有表單最下面 -->
         <div class="save-button-wrapper">
           <button class="save-button" @click="handleSave">完成</button>
         </div>
@@ -19,13 +20,11 @@ import SideControl from '@/components/SideControl.vue'
 
 import { ref } from 'vue'
 import axios from 'axios'
-import ElderInfoForm from '@/components/ElderInfoForm.vue'
-
-const elderFormRef = ref()
-// const contact1Ref = ref()
-// const contact2Ref = ref()
+const contact1Ref = ref()
+const contact2Ref = ref()
 
 import { useRouter } from 'vue-router'
+import EmergencyContact from '@/components/EmergencyContact.vue'
 const router = useRouter()
 
 
@@ -46,14 +45,13 @@ function goToControl() {
 }
 
 const handleSave = async () => {
-  const elder = elderFormRef.value.elder
-  // const contact1 = contact1Ref.value.contact
-  // const contact2 = contact2Ref.value.contact
+
+  const contact1 = contact1Ref.value.contact
+  const contact2 = contact2Ref.value.contact
 
   const payload = {
-    elder,
-    // contact1,
-    // contact2
+    contact1,
+    contact2
   }
 
   try {
@@ -89,7 +87,6 @@ const handleSave = async () => {
   display: flex;
   flex-direction: column;
   gap: 24px; /* 元件之間留白 */
-  margin-top: 20px;
 }
 
 /* 儲存按鈕容器 */

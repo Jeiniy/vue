@@ -1,22 +1,20 @@
 
   /* 左側主要表單區塊 */
   .form-wrapper {
-    width: 120%;
+    width: 110%;
     margin: 0;   
     padding: 20px 50px;
     background-color: rgba(255, 255, 255, 0.8); 
     border-radius: 15px;                       
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);   
-                                  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);                          
     clear: both;                               
-    margin-bottom: 10px;                       
-              
+    margin: 0 0 10px 50px;                      
   }
   
   /* 緊急聯絡人表單區塊，靠右 */
   .form-wrapper1,
   .form-wrapper2 {
-    width: 80%;
+    width: 110%;
     margin: 1px auto;
     padding: 20px 50px;
     background-color: rgba(255, 255, 255, 0.8); 
@@ -24,7 +22,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);   
     float: left;                               
     clear: both;                               
-    margin-bottom: 10px;   
+    margin: 0 0 10px 30px;     
   }
   
   
