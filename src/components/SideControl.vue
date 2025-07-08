@@ -20,6 +20,10 @@
             <img :src="img7" alt="時程安排" class="menu-icon" />
             <span>時程安排</span>
         </li>
+        <li class="menu-item" @click="goToFall" >
+            <img :src="img8" alt="跌倒偵測" class="menu-icon" />
+            <span>跌倒偵測</span>
+        </li>
         <li class="menu-item" @click="goToEnter">
             <img :src="img3" alt="年長者資訊" class="menu-icon" />
             <span>年長者資訊</span>
@@ -45,6 +49,7 @@ import img4 from '@/assets/image/settings.png'
 import img5 from '@/assets/image/analytics.png'
 import img6 from '@/assets/image/emergency-call.png'
 import img7 from '@/assets/image/schedule.png'
+import img8 from '@/assets/image/person.png'
 
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -55,6 +60,10 @@ function goToHome() {
 
 function goToSchedule() {
   router.push('/schedule')
+}
+
+function goToFall() {
+  router.push('/fall')
 }
 
 function goToEnter() {
@@ -131,6 +140,13 @@ function goToControl() {
   height: 25px;
   filter: brightness(0.7);
   opacity: 0.9;
+}
+
+.menu-icon[alt="跌倒偵測"] {
+  width: 25px;
+  height: 25px;
+  filter: brightness(0.7);
+  opacity: 1;
 }
 
 .logout {

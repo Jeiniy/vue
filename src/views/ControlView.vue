@@ -3,22 +3,40 @@
     <SideControl />
     
     <div class="dashboard-container">
-  <!-- 左邊：圖表與卡片 -->
+    <!-- 左邊：圖表與卡片 -->
       <main class="main-content">
         <div class="chart-box">
           <h3>Time Spendings</h3>
           <canvas ref="timeChartRef"></canvas>
         </div>
         <div class="small-cards">
-          <div class="card green large-card">
-            <!-- Statistics 內容 -->
+          <div class="card large-card" :class="status === 'safe' ? 'safe' : 'danger'" @click="goToFall">
+            <div class="card-header">跌倒偵測</div>
+
+            <div class="status-icon">
+              <span v-if="status === 'safe'">👍</span>
+              <span v-else>⚠️</span>
+            </div>
+
+            <div class="status-text">
+              {{ status === 'safe' ? '目前無異狀' : '發生危險' }}
+            </div>
+
+            <div class="card-footer" @click.stop>
+              <span>更新時間：{{ updateTime }}</span>
+              <button @click="testDetection">測試</button>
+            </div>
           </div>
 
-          <div class="right-side">
+           <div class="right-side">
             <div class="card orange small-card">Awards</div>
             <div class="card yellow small-card">Growth</div>
           </div>
+
         </div>
+
+         
+        
       </main>
 
       <!-- 右邊：淺灰色區域 -->
@@ -26,7 +44,7 @@
         <Schedules />
       </aside>
     </div>
-  </div>
+  </div>  
 </template>
 
 <script setup>
@@ -37,6 +55,32 @@ import { onMounted, ref } from 'vue'
 // import Chart from 'chart.js/auto'
 const timeChartRef = ref(null)
 const growthChartRef = ref(null)
+
+const status = ref('safe') // 初始狀態為安全
+const updateTime = ref('—')
+
+function testDetection() {
+  // 假裝隨機測試狀態
+  const random = Math.random() > 0.5 ? 'safe' : 'danger'
+  status.value = random
+  updateTime.value = new Date().toLocaleTimeString()
+}
+
+// 每 3 秒自動模擬跌倒或安全狀態
+onMounted(() => {
+  setInterval(() => {
+    const fake = Math.random() > 0.5 ? 'safe' : 'danger'
+    status.value = fake
+    updateTime.value = new Date().toLocaleTimeString()
+  }, 3000)
+})
+
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+function goToFall() {
+  router.push('/fall')
+}
 
 
 // onMounted(() => {
@@ -116,6 +160,7 @@ const growthChartRef = ref(null)
   margin-top: -30px;
   padding: 20px;
   width: 650px;
+  height: 600px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
@@ -153,12 +198,64 @@ const growthChartRef = ref(null)
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   background-color: white;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/*跌倒偵測*/
+.status-card {
+  width: 300px;
+  height: 300px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.3s ease;
+  color: #222;
+}
+
+.card.safe {
+  background-color: #e6fcf2;
+}
+
+.card.danger {
+  background-color: #ffe6e6;
+}
+
+.status-icon {
+  font-size: 60px;
+  text-align: center;
+  margin-top: 20px; 
+}
+
+.status-text {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+ 
+}
+
+.card-header {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 50px;
 }
 
 /* 各色背景 */
-.green {
-  background-color: #e6fcf2;
-}
 .orange {
   background-color: #fff0e6;
 }
@@ -174,7 +271,7 @@ const growthChartRef = ref(null)
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  height: 605px;
+  height: 545px;
   width: 300px;
 }
 

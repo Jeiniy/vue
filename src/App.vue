@@ -9,8 +9,6 @@
     <!-- 側邊選單 -->
     <SideMenu :isOpen="showSideMenu" :closeMenu="closeMenu" />
     
-    
-
     <!-- 主要內容 -->
     <div class="flex-grow">
       <router-view />
@@ -34,9 +32,9 @@ const showSideMenu = ref(false)
 const route = useRoute()
 
 // 哪些頁面不顯示主 Navbar
-const noNavbarRoutes = ['/control', '/Enter', '/Enter2','/schedule']
+const noNavbarRoutes = ['/control', '/Enter', '/Enter2','/schedule','/fall']
 // 哪些頁面顯示控制專用 NavbarControl
-const controlNavbarRoutes = ['/control', '/Enter', '/Enter2','/schedule']
+const controlNavbarRoutes = ['/control', '/Enter', '/Enter2','/schedule','/fall']
 
 function openMenu() {
   showSideMenu.value = true
