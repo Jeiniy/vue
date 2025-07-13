@@ -1,5 +1,7 @@
 <template>
-  <main class="register-page-main">
+  <div class="container">
+    <SideControl />
+      <main class="register-page-main">
     <div class="register-box">
 
 <h2 class="form-title">修改個人資訊</h2>
@@ -57,10 +59,18 @@
 
 </div>
   </main>
+  </div>  
+  
   
 </template>
 
 <style scoped>
+.container {
+  display: flex;
+  height: 100vh;
+  background: #ffffff;
+}
+
 
 .register-page-main {
     min-height: calc(100vh - 200px); /* ✅ 頂部Navbar高度+底部Footer高度，扣掉 */
@@ -150,6 +160,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
+import SideControl from '@/components/SideControl.vue'
 
 const router = useRouter()
 

@@ -32,7 +32,7 @@
             <img :src="img6" alt="緊急聯絡人" class="menu-icon" />
             <span>緊急聯絡人</span>
         </li>
-        <li class="menu-item">
+        <li class="menu-item" @click="goToSettings">
             <img :src="img4" alt="設定" class="menu-icon" />
             <span>設定</span>
         </li>
@@ -76,6 +76,10 @@ function goToEnter2() {
 
 function goToControl() {
   router.push('/control')
+}
+
+function goToSettings() {
+  router.push('/change')
 }
 
 // const route = useRoute() // ✅ 取得目前的路由路徑

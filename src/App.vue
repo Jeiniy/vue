@@ -32,9 +32,9 @@ const showSideMenu = ref(false)
 const route = useRoute()
 
 // 哪些頁面不顯示主 Navbar
-const noNavbarRoutes = ['/control', '/Enter', '/Enter2','/schedule','/fall']
+const noNavbarRoutes = ['/control', '/Enter', '/Enter2','/schedule','/fall','/change']
 // 哪些頁面顯示控制專用 NavbarControl
-const controlNavbarRoutes = ['/control', '/Enter', '/Enter2','/schedule','/fall']
+const controlNavbarRoutes = ['/control', '/Enter', '/Enter2','/schedule','/fall','/change']
 
 function openMenu() {
   showSideMenu.value = true
