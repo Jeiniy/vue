@@ -142,6 +142,7 @@ const goToSchedule = () => {
   border-radius: 12px;
   padding: 20px;
   width: 100%;
+  min-height: 1000px;
   max-width: 300px;
   margin: 0 auto;
   transform: translateX(-5%);

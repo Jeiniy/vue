@@ -81,6 +81,7 @@
             <label><input type="checkbox" value="三餐飯前" v-model="elder.medications" /> 三餐飯前</label>
             <label><input type="checkbox" value="早晚各一次" v-model="elder.medications" /> 早晚各一次</label>
             <label><input type="checkbox" value="睡前" v-model="elder.medications" /> 睡前</label>
+            <label><input type="checkbox" value="無" v-model="elder.medications" /> 無</label>
             <label>
               <input type="checkbox" value="其他" v-model="elder.medications" /> 其他：
               <input type="text" v-model="elder.medicationOther" class="other-input" />
