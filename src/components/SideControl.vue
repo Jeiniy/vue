@@ -16,6 +16,10 @@
             <img :src="img5" alt="分析" class="menu-icon" />
             <span>分析頁面</span>
         </li>
+        <li class="menu-item" @click="goToEmotion" >
+            <img :src="img9" alt="情緒追蹤" class="menu-icon" />
+            <span>情緒追蹤</span>
+        </li>
          <li class="menu-item" @click="goToSchedule" >
             <img :src="img7" alt="時程安排" class="menu-icon" />
             <span>時程安排</span>
@@ -50,6 +54,7 @@ import img5 from '@/assets/image/analytics.png'
 import img6 from '@/assets/image/emergency-call.png'
 import img7 from '@/assets/image/schedule.png'
 import img8 from '@/assets/image/person.png'
+import img9 from '@/assets/image/emotions.png'
 
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -64,6 +69,10 @@ function goToSchedule() {
 
 function goToFall() {
   router.push('/fall')
+}
+
+function goToEmotion(){
+  router.push('/Emotion')
 }
 
 function goToEnter() {
@@ -147,6 +156,13 @@ function goToSettings() {
 }
 
 .menu-icon[alt="跌倒偵測"] {
+  width: 25px;
+  height: 25px;
+  filter: brightness(0.7);
+  opacity: 1;
+}
+
+.menu-icon[alt="情緒追蹤"] {
   width: 25px;
   height: 25px;
   filter: brightness(0.7);

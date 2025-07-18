@@ -18,6 +18,7 @@
         <li><router-link to="/"><img :src="img1" /> 回首頁</router-link></li>
         <li><a href="#"><img :src="img2" /> 關於我們 </a></li>
         <li><a href="#"><img :src="img3" /> 使用教學 </a></li>
+        <li><router-link to="/control"><img :src="img5" /> 分析頁面 </router-link></li>
       </ul>
 
       <!-- 底部登入連結 -->
@@ -35,7 +36,7 @@ import img1 from '@/assets/image/home.png'
 import img2 from '@/assets/image/graduate.png'
 import img3 from '@/assets/image/assignment.png'
 import img4 from '@/assets/image/user.png'
-
+import img5 from '@/assets/image/analytics.png'
 defineProps({
   isOpen: Boolean,
   closeMenu: Function

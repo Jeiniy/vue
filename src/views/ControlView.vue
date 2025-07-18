@@ -4,11 +4,9 @@
     
     <div class="dashboard-container">
     <!-- 左邊：圖表與卡片 -->
-      <main class="main-content">
-        <div class="chart-box">
-          <h3>Time Spendings</h3>
-          <canvas ref="timeChartRef"></canvas>
-        </div>
+      <main class="main-content" @click="goToEmotion">
+        <EmotionChart />
+        
         <div class="small-cards">
           <div class="card large-card" :class="status === 'safe' ? 'safe' : 'danger'" @click="goToFall">
             <div class="card-header">跌倒偵測</div>
@@ -29,7 +27,8 @@
           </div>
 
            <div class="right-side">
-            <div class="card orange small-card">Awards</div>
+            <div class="card orange small-card">今日情緒分析</div>
+              
             <div class="card yellow small-card">Growth</div>
           </div>
 
@@ -50,7 +49,7 @@
 <script setup>
 import Schedules from '@/components/Schedules.vue'
 import SideControl from '@/components/SideControl.vue'
-
+import EmotionChart from '@/components/EmotionChart.vue'
 import { onMounted, ref } from 'vue'
 // import Chart from 'chart.js/auto'
 const timeChartRef = ref(null)
@@ -82,6 +81,9 @@ function goToFall() {
   router.push('/fall')
 }
 
+function goToEmotion(){
+  router.push('/Emotion')
+}
 
 // onMounted(() => {
 //   new Chart(timeChartRef.value, {
@@ -120,11 +122,9 @@ function goToFall() {
 <style scoped>
 .container {
   display: flex;
-  height: 100vh;
+  height: 600px;
   background: #ffffff;
 }
-
-
 .main-content {
   flex: 1;
   padding: 30px;
@@ -271,9 +271,11 @@ function goToFall() {
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  height: 545px;
+  height: 665px;
   width: 300px;
 }
-
+/* * {
+  outline: 1px solid red;
+} */
 
 </style>

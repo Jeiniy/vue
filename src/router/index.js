@@ -8,6 +8,7 @@ import ChangeView from '@/views/ChangeView.vue'
 import EnterView from '@/views/EnterView.vue'
 import EnterView2 from '@/views/EnterView2.vue'
 import ScheduleView from '@/views/ScheduleView.vue'
+import EmotionView from '@/views/EmotionView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,7 @@ const router = createRouter({
     { path: '/enter', name: 'Enter', component: EnterView },
     { path: '/enter2', name: 'Enter2', component: EnterView2 },
     { path: '/fall', component: FallMonitor },
+    { path: '/Emotion', name: 'Emotion',component: EmotionView },
     { path: '/schedule', name: 'Schedule',component: ScheduleView}
   ]
 })

@@ -6,75 +6,78 @@
       <h1>時程安排</h1>
 
       <div class="content-grid">
-        <!-- 左側行事曆 -->
-        <div class="calendar-card">
-          <v-calendar
-            :attributes="calendarAttributes"
-            @dayclick="onDateClick"
-            color="indigo"
-          />
-          <p v-if="selectedDate" class="selected-date">📅 選擇日期：{{ selectedDate }}</p>
-        </div>
+        
+          <!-- 左側行事曆 -->
+          <div class="calendar-card">
+            <v-calendar
+              :attributes="calendarAttributes"
+              @dayclick="onDateClick"
+              color="indigo"
+            />
+            <p v-if="selectedDate" class="selected-date">📅 選擇日期：{{ selectedDate }}</p>
+          </div>
 
-        <!-- 右側活動區 -->
-        <div class="activity-area">
-          <!-- 活動表單 -->
-          <div class="form-card">
-            <h3>{{ editingId === null ? '新增活動' : '編輯活動' }}</h3>
+          <!-- 右側活動區 -->
+          <div class="activity-area">
+            <!-- 活動表單 -->
+            <div class="form-card">
+              <h3>{{ editingId === null ? '新增活動' : '編輯活動' }}</h3>
 
-            <div class="form-group">
-              <label>時間:</label>
-              <div class="time-selects">
-                <select v-model="form.hour">
-                  <option disabled value="">時</option>
-                  <option v-for="h in 24" :key="h" :value="padZero(h - 1)">
-                    {{ padZero(h - 1) }}
-                  </option>
-                </select>
-                :
-                <select v-model="form.minute">
-                  <option disabled value="">分</option>
-                  <option v-for="m in [0, 15, 30, 45]" :key="m" :value="padZero(m)">
-                    {{ padZero(m) }}
-                  </option>
-                </select>
+              <div class="form-group">
+                <label>時間:</label>
+                <div class="time-selects">
+                  <select v-model="form.hour">
+                    <option disabled value="">時</option>
+                    <option v-for="h in 24" :key="h" :value="padZero(h - 1)">
+                      {{ padZero(h - 1) }}
+                    </option>
+                  </select>
+                  :
+                  <select v-model="form.minute">
+                    <option disabled value="">分</option>
+                    <option v-for="m in [0, 15, 30, 45]" :key="m" :value="padZero(m)">
+                      {{ padZero(m) }}
+                    </option>
+                  </select>
+                </div>
+              
+              </div>
+
+              <div class="form-group">
+                <label>內容:</label>
+                <input v-model="form.content" placeholder="輸入活動內容" required />
+              </div>
+
+              <div class="form-group">
+                <label>由誰安排:</label>
+                <input v-model="form.user" placeholder="輸入姓名" required />
+              </div>
+
+              <div class="button-row">
+                <button class="btn-submit" @click="saveEvent">
+                  {{ editingId === null ? '新增' : '更新' }}
+                </button>
+                <button class="btn-cancel" v-if="editingId !== null" @click="cancelEdit">取消</button>
               </div>
             </div>
 
-            <div class="form-group">
-              <label>內容:</label>
-              <input v-model="form.content" placeholder="輸入活動內容" required />
+            <!-- 活動列表 -->
+            <div class="event-list" v-if="sortedEvents.length > 0">
+              <h4>活動安排：</h4>
+              <ul>
+                <li v-for="event in sortedEvents" :key="event.id" class="event-item">
+                  <span>🕒 {{ event.time }}</span>｜<span>{{ event.content }}</span>（{{ event.user }}）
+                  <div class="event-buttons">
+                    <button @click="editEvent(event.id)">編輯</button>
+                    <button @click="deleteEvent(event.id)">刪除</button>
+                  </div>
+                </li>
+              </ul>
             </div>
-
-            <div class="form-group">
-              <label>由誰安排:</label>
-              <input v-model="form.user" placeholder="輸入姓名" required />
-            </div>
-
-            <div class="button-row">
-              <button class="btn-submit" @click="saveEvent">
-                {{ editingId === null ? '新增' : '更新' }}
-              </button>
-              <button class="btn-cancel" v-if="editingId !== null" @click="cancelEdit">取消</button>
-            </div>
+            <div v-else-if="selectedDate" class="empty-message">目前無活動</div>
           </div>
-
-          <!-- 活動列表 -->
-          <div class="event-list" v-if="sortedEvents.length > 0">
-            <h4>活動安排：</h4>
-            <ul>
-              <li v-for="event in sortedEvents" :key="event.id" class="event-item">
-                <span>🕒 {{ event.time }}</span>｜<span>{{ event.content }}</span>（{{ event.user }}）
-                <div class="event-buttons">
-                  <button @click="editEvent(event.id)">編輯</button>
-                  <button @click="deleteEvent(event.id)">刪除</button>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div v-else-if="selectedDate" class="empty-message">目前無活動</div>
-        </div>
-      </div>
+        </div>    
+      
     </div>
   </div>
 </template>
@@ -319,4 +322,5 @@ input, select {
   color: #888;
   font-style: italic;
 }
+
 </style>
