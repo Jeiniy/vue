@@ -8,7 +8,7 @@
       <div class="content-grid">
         
           <!-- 左側行事曆 -->
-          <div class="calendar-card">
+          <div class="calendar-area">
             <v-calendar
               :attributes="calendarAttributes"
               @dayclick="onDateClick"
@@ -214,26 +214,35 @@ h2 {
 
 .content-grid {
   display: flex;
-  gap: 24px;
+  gap: 40px;
+  margin-top: 20px;
   align-items: flex-start;
 }
 
-.calendar-card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-  width: 320px;
+.calendar-area {
+  max-width: 500px;
+}
+
+.calendar-area ::v-deep(.vc-container) {
+  /* border: 2px dashed red; */
+  transform: scale(1.2);  /* 放大整個日曆視圖 */
+  transform-origin: top left;
+}
+
+.large-calendar .vc-container {
+  font-size: 1.2rem;
+  --vc-day-size: 50px;
 }
 
 .selected-date {
-  margin-top: 10px;
+  margin-top: 60px;
   font-weight: 500;
   color: #555;
 }
 
 .activity-area {
   flex: 1;
+  margin-left:50px ;
   min-width: 300px;
   max-width: 600px; /* 限制最大寬度 */
   background: white;
