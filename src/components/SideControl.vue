@@ -12,31 +12,45 @@
             <img :src="img2" alt="教學" class="menu-icon" />
             <span>使用教學</span>
         </li>
-        <li class="menu-item" @click="goToControl" >
+        <li class="menu-item" 
+            :class="{ active: route.path === '/control' }"
+            @click="goToControl" >
             <img :src="img5" alt="分析" class="menu-icon" />
             <span>分析頁面</span>
         </li>
-        <li class="menu-item" @click="goToEmotion" >
+        <li class="menu-item" 
+            :class="{ active: route.path === '/Emotion' }"
+            @click="goToEmotion" >
             <img :src="img9" alt="情緒追蹤" class="menu-icon" />
             <span>情緒追蹤</span>
         </li>
-         <li class="menu-item" @click="goToSchedule" >
+         <li class="menu-item"
+            :class="{ active: route.path === '/schedule' }"
+             @click="goToSchedule" >
             <img :src="img7" alt="時程安排" class="menu-icon" />
             <span>時程安排</span>
         </li>
-        <li class="menu-item" @click="goToFall" >
+        <li class="menu-item"
+            :class="{ active: route.path === '/fall' }"
+            @click="goToFall" >
             <img :src="img8" alt="跌倒偵測" class="menu-icon" />
             <span>跌倒偵測</span>
         </li>
-        <li class="menu-item" @click="goToEnter">
+        <li class="menu-item" 
+            :class="{ active: route.path === '/Enter' }"
+            @click="goToEnter">
             <img :src="img3" alt="年長者資訊" class="menu-icon" />
             <span>年長者資訊</span>
         </li>
-        <li class="menu-item" @click="goToEnter2">
+        <li class="menu-item" 
+            :class="{ active: route.path === '/Enter2' }"
+            @click="goToEnter2">
             <img :src="img6" alt="緊急聯絡人" class="menu-icon" />
             <span>緊急聯絡人</span>
         </li>
-        <li class="menu-item" @click="goToSettings">
+        <li class="menu-item"
+            :class="{ active: route.path === '/change' }"
+             @click="goToSettings">
             <img :src="img4" alt="設定" class="menu-icon" />
             <span>設定</span>
         </li>
@@ -93,6 +107,8 @@ function goToSettings() {
 
 // const route = useRoute() // ✅ 取得目前的路由路徑
 // const isActive = (path) => route.path === path
+import { useRoute } from 'vue-router'  // ⬅️ 這一行是關鍵
+const route = useRoute()
 
 </script>
 
@@ -133,6 +149,18 @@ function goToSettings() {
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   font-size: 17px;
+}
+
+.menu-item.active {
+  background-color: #f0f0f0;;
+  color: #7d4ce0;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.menu-item.active .menu-icon {
+  filter: none;
+  opacity: 1;
 }
 
 .menu-item:hover {
@@ -197,10 +225,5 @@ function goToSettings() {
   cursor: pointer;
 }
 
-.sidebar li.active {
-  color: white;
-  background: #7d4ce0;
-  padding: 8px 12px;
-  border-radius: 8px;
-}
+
 </style>
