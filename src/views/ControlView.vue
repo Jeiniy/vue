@@ -4,8 +4,9 @@
     
     <div class="dashboard-container">
     <!-- 左邊：圖表與卡片 -->
-      <main class="main-content" @click="goToEmotion">
-        <EmotionChart />
+      <main class="main-content">
+        
+        <EmotionChart  @click="goToEmotion"/>
         
         <div class="small-cards">
           <div class="card large-card" :class="status === 'safe' ? 'safe' : 'danger'" @click="goToFall">
@@ -22,7 +23,7 @@
 
             <div class="card-footer" @click.stop>
               <span>更新時間：{{ updateTime }}</span>
-              <button @click="testDetection">測試</button>
+              <button class="button" @click="testDetection">測試</button>
             </div>
           </div>
 
@@ -58,21 +59,21 @@ const growthChartRef = ref(null)
 const status = ref('safe') // 初始狀態為安全
 const updateTime = ref('—')
 
-function testDetection() {
-  // 假裝隨機測試狀態
-  const random = Math.random() > 0.5 ? 'safe' : 'danger'
-  status.value = random
-  updateTime.value = new Date().toLocaleTimeString()
-}
+// function testDetection() {
+//   // 假裝隨機測試狀態
+//   const random = Math.random() > 0.5 ? 'safe' : 'danger'
+//   status.value = random
+//   updateTime.value = new Date().toLocaleTimeString()
+// }
 
-// 每 3 秒自動模擬跌倒或安全狀態
-onMounted(() => {
-  setInterval(() => {
-    const fake = Math.random() > 0.5 ? 'safe' : 'danger'
-    status.value = fake
-    updateTime.value = new Date().toLocaleTimeString()
-  }, 3000)
-})
+// // 每 3 秒自動模擬跌倒或安全狀態
+// onMounted(() => {
+//   setInterval(() => {
+//     const fake = Math.random() > 0.5 ? 'safe' : 'danger'
+//     status.value = fake
+//     updateTime.value = new Date().toLocaleTimeString()
+//   }, 3000)
+// })
 
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -176,6 +177,18 @@ function goToEmotion(){
   width: 300px;
   height: 300px;
   flex-shrink: 0; /* 防止被壓縮 */
+}
+
+.button {
+  background-color: #7b3aed;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+.button:hover {
+  background: #6930cc;
 }
 
 /* 右側容器垂直排兩張卡片 */

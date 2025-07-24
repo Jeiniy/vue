@@ -178,6 +178,10 @@ const goToSchedule = () => {
   flex-shrink: 0; /* 不要被壓縮 */
   margin-left: 16px;
 }
+.add-button:hover {
+  background: #6930cc;
+}
+
 
 
 .event-form {
